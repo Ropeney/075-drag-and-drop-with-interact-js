@@ -10,7 +10,7 @@
 #
 
 class Food < ApplicationRecord
-  has_many :recipes, dependent: :destroy, class_name: 'Recipe'
+  has_many :recipies, dependent: :destroy, class_name: 'Recipe'
   has_many :ingredients, through: :recipes
 
   def self.favorite_foods
