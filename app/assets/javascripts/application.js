@@ -47,7 +47,9 @@ $(document).on('turbolinks:load', function(){
       event.target.classList.add('drop-target');
       event.relatedTarget.classList.add('can-drop');
       return $.get(event.relatedTarget.attributes['data-url'].value, {
-        favorite: true
+        favorite: true,
+        x: event.relatedTarget.attributes['data-x'].value,
+        y: event.relatedTarget.attributes['data-y'].value,
       });
     },
     ondragleave: function(event) {
@@ -57,7 +59,15 @@ $(document).on('turbolinks:load', function(){
         favorite: false
       });
     },
-    ondrop: function(event) {},
+    ondrop: function(event) {
+      event.target.classList.add('drop-target');
+      event.relatedTarget.classList.add('can-drop');
+      return $.get(event.relatedTarget.attributes['data-url'].value, {
+        favorite: true,
+        x: event.relatedTarget.attributes['data-x'].value,
+        y: event.relatedTarget.attributes['data-y'].value,
+      });
+    },
     ondropdeactivate: function(event) {
       event.target.classList.remove('drop-active');
       return event.target.classList.remove('drop-target');
